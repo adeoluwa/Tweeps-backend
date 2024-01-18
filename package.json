@@ -1,14 +1,18 @@
 {
   "name": "tweeps",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "api for tweeps",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts nodemon.json"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "api",
+    "social media",
+    "tweet"
+  ],
+  "author": "Adeolu",
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.7.1",

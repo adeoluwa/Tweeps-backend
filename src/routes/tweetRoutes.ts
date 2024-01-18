@@ -1,43 +1,35 @@
 import { Router } from "express";
 
-const router = Router()
+import { TweetController } from "../controllers/tweet_controller";
 
-// create Tweets
-router.post("/", (req, res) => {
-    res.status(501).json({
-        error: "Not Implemented"
-    })
-})
 
-// List Tweets
-router.get('/', (req, res) => {
-    res.status(501).json({
-        error: "Not implemented!"
-    });
-})
+class TweetRouter {
+    private tweetController = new TweetController();
+    readonly router = Router();
 
-//get a single Tweet
-router.get('/:id', (req, res) => {
-    const {id} = req.params;
-    res.status(501).json({
-        error: `Not implemented!: ${id}`
-    });
-})
+    constructor() {
+        this.initializeRoutes();
+    }
 
-//update Tweet
-router.put('/:id', (req, res) => {
-    const {id} = req.params;
-    res.status(501).json({
-        error: `Not implemented!: ${id}`
-    });
-})
+    private initializeRoutes(){
+        this.router 
 
-// delete Tweet
-router.delete('/:id', (req, res) => {
-    const {id} = req.params;
-    res.status(501).json({
-        error: `Not implemented!: ${id}`
-    });
-})
+            // create tweet
+            .post('/', this.tweetController.createTweet)
 
-export default router;
+            // list tweet
+            .get("/", this.tweetController.listTweets)
+
+            //get tweet
+            .get('/:id', this.tweetController.getTweet)
+
+            // update tweet
+            .put("/:id", this.tweetController.editTweet)
+
+            // delete tweet
+            .delete("/:id", this.tweetController.deleteTweet)
+    }
+}
+
+
+export default new TweetRouter();

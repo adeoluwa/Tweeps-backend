@@ -23,6 +23,7 @@ model User{
   isVerified Boolean @default(false)
 
   tweets Tweet[]
+  reports Report[]
 }
 
 model Tweet{
@@ -37,4 +38,13 @@ model Tweet{
 
   userId Int
   user User @relation(fields: [userId], references: [id])
+}
+
+model Report {
+  id Int @id @default(autoincrement())
+  reportedId Int
+  userId Int
+  reason Int
+  createdAt DateTime @default(now())
+  User User @relation(fields: [userId], references: [id])
 }
