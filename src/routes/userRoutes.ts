@@ -6,12 +6,12 @@ class UserRouter {
     private userController = new UserController();
     readonly router = Router();
 
-    constructor(){
+    constructor() {
         this.initializeRoutes();
     }
 
-    private initializeRoutes(){
-        this.router 
+    private initializeRoutes() {
+        this.router
 
             // create user
             .post("/", this.userController.createUsers)
