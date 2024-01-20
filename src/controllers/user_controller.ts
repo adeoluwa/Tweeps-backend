@@ -37,11 +37,11 @@ export class UserController {
     async listUsers(req: Request, res: Response) {
         try {
             const allUsers = await prisma.user.findMany({
-                select: { 
-                    id: true,
-                    name: true,
-                    image: true,
-                },
+                // select: {
+                //     id: true,
+                //     name: true,
+                //     image: true,
+                // },
             });
 
             res.status(200).json({

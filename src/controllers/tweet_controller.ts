@@ -60,7 +60,7 @@ export class TweetController {
    async getTweet(req: Request, res: Response) {
       try {
          const { id } = req.params;
-         const tweet = await prisma.tweet.findUnique({ where: { id: Number(id) } })
+         const tweet = await prisma.tweet.findUnique({ where: { id: Number(id) }, include: { user: true, } })
 
          if (!tweet) {
             res.status(404).json({
